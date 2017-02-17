@@ -66,15 +66,17 @@
 		<url-pattern>*.html</url-pattern>
 	</filter-mapping>-->
 
-	<!-- SiteMesh -->
+	<!-- SiteMesh 装饰器模式 -->
 	<filter>
 		<filter-name>sitemeshFilter</filter-name>
 		<filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
 	</filter>
+	<!--a 标识是管理端的 url 前缀-->
 	<filter-mapping>
 		<filter-name>sitemeshFilter</filter-name>
 		<url-pattern>/a/*</url-pattern>
 	</filter-mapping>
+	<!--f 标识是前端的 url 前缀-->
 	<filter-mapping>
 		<filter-name>sitemeshFilter</filter-name>
 		<url-pattern>/f/*</url-pattern>

@@ -1,29 +1,23 @@
-@echo off
-rem /**
-rem  * Copyright &copy; 2012-2016 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights reserved.
-rem  *
-rem  * Author: ThinkGem@163.com
-rem  */
-echo.
-echo [ÐÅÏ¢] ¸üÐÂÏîÄ¿°æ±¾ºÅ¡£
-echo.
-rem pause
-echo.
+# /**
+#  * Copyright &copy; 2012-2016 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights reserved.
+#  *
+#  * Author: ThinkGem@163.com
+#  */
+echo '\n'
+echo [ä¿¡æ¯] æ›´æ–°é¡¹ç›®ç‰ˆæœ¬å·ã€‚
+echo '\n'
 
-cd %~dp0
+set /p new=è¯·è¾“å…¥æ–°ç‰ˆæœ¬å·ï¼š
 
-set /p new=ÇëÊäÈëÐÂ°æ±¾ºÅ£º
-echo.
+echo '\n'
 
-pause
-echo.
 cd ..
 
-rem ¸üÐÂpom°æ±¾ºÅ
-call mvn versions:set -DnewVersion=%new%
+# æ›´æ–°pomç‰ˆæœ¬å·
+mvn versions:set -DnewVersion=%new%
 
-rem Ìæ»» jeesite.properties ÖÐµÄ°æ±¾ºÅ
-echo.
+# æ›¿æ¢ jeesite.properties ä¸­çš„ç‰ˆæœ¬å·
+echo '\n'
 set f=%cd%\src\main\resources\jeesite.properties
 echo [INFO] Update %f%
 set s1=version=
@@ -32,9 +26,6 @@ for /f "delims=:" %%a in ('findstr /in "%s1%" "%f%"') do set n=%%a
 (for /f "tokens=1* delims=:" %%a in ('findstr /n ".*" "%f%"') do (
   if %%a equ %n% ( echo.%s2%) else ( echo.%%b)
 ))>newfile
-echo.
-move newfile "%f%" >nul
-echo.
-
-cd bin
-pause
+echo '\n'
+mv newfile "%f%" >nul
+echo '\n'
